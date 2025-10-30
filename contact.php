@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css? <?= time(); ?> ">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Contact - Grip Shop</title>
@@ -11,13 +11,14 @@
 <body>
     <?php
     include_once("navbar.php");
-    navbar("contact");
+    navbar($tArray["ContactBtn"]);
     ?>
     <h1>Contact us</h1>
-    <form action="/contact" method="post">
+    <form method="post">
         <label>Name <input name="name" required></label>
-        <label>Email <input type="email" name="email" required></label>
-        <label>Message <textarea name="message" rows="4" required></textarea></label>
+        <label>Password <input type="password" name="pass" required></label>
+        <!--<label>Email <input type="email" name="email" required></label>-->
+        <label>Message <textarea name="message" required></textarea></label>
         <button type="submit">Send</button>
     </form>
     <address>Luxembourg +352 00 00 00 hello@grip.shop</address>

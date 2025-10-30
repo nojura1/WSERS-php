@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css? <?= time(); ?> ">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Products - Grip Shop</title>
@@ -11,13 +11,29 @@
 <body>
     <?php
     include_once("navbar.php");
-    navbar("products");
+    navbar($tArray["ProductBtn"]);
     ?>
     <h1>Products</h1>
-    <ul>
-        <li>Adjustable 10-60 kg - €44.90</li>
-        <li>Captain of Crush - €24.00</li>
-    </ul>
+    <div class="products">
+        <?php
+        $fhandler = fopen("products.csv", "r");
+        fgets($fhandler);
+
+        while (!feof($fhandler)) {
+            $line = fgets($fhandler);
+            $atoms = explode(";", $line);
+            if (count($atoms) != 6) {
+                ?>
+                <div class="prod">
+                    <div><?php ?></div>
+                    <img src="pics/<?php $atoms[2] ?>" alt="C++ coach">
+                    <div><?php ?></div>
+                    <div><?php ?></div>
+                </div>
+
+            <?php }
+        } ?>
+    </div>
 </body>
 
 </html>
