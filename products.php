@@ -22,13 +22,13 @@
         while (!feof($fhandler)) {
             $line = fgets($fhandler);
             $atoms = explode(";", $line);
-            if (count($atoms) != 6) {
+            if (count($atoms) == 6) {
                 ?>
                 <div class="prod">
-                    <div><?php ?></div>
-                    <img src="pics/<?php $atoms[2] ?>" alt="C++ coach">
-                    <div><?php ?></div>
-                    <div><?php ?></div>
+                    <div><?php $lang == "EN" ? print $atoms[0] : print $atoms[1]; ?></div>
+                    <img src="pics/<?php print $atoms[2]; ?>" alt="<?php $lang == "EN" ? print $atoms[0] : print $atoms[1]; ?>">
+                    <div><?php print $atoms[3] ?></div>
+                    <div><?php $lang == "EN" ? print $atoms[4] : print $atoms[5]; ?></div>
                 </div>
 
             <?php }

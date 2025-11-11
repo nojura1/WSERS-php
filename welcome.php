@@ -14,10 +14,21 @@
     include_once("navbar.php");
     navbar($tArray["HomeBtn"]);
     ?>
-    <h1>Grip Shop</h1>
-    <p>Crush it. Build your grip.</p>
-    <h2>Start here</h2>
-    <p>New to grippers? Begin with 40 kgs.</p>
+
+    <div class="welcome">
+        <h1><?= $tArray["Mentor"] ?></h1>
+        <p><?= $tArray["WelcomeSlogan1"] ?></p>
+
+        <h2><?= $tArray["WelcomeQuestion"] ?></h2>
+        <p><?= $tArray["WelcomeChoose"] ?><br><?= $tArray["WelcomeFocus"] ?></p>
+
+        <div class="start-call">
+            <a href="products.php" class="btn"><?= $tArray["WelcomeStartBtn"] ?></a>
+        </div>
+
+        <h3><?= $tArray["WelcomeNoTomorrow"] ?></h3>
+        <p><?= $tArray["WelcomeChange"] ?></p>
+    </div>
 </body>
 
 </html>

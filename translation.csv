@@ -1,5 +1,13 @@
 Key;English;Ukrainian
 HomeBtn;home;головна
-ProductBtn;products;товари
+ProductBtn;mentor;ментор
 ContactBtn;contact;зв'язатися
 RegisterBtn;register;зареєструватися
+Mentor;Choose Your Mentor;Вибери наставника
+WelcomeSlogan1;Here you don't buy things. You buy development.;Тут не продають речі. Тут купують розвиток.
+WelcomeQuestion;Who are you today?;Хто ти сьогодні?
+WelcomeChoose;Choose a mentor for your path.;Обери наставника під свій шлях.
+WelcomeFocus;Strength, style, code, discipline, rhythm — what do you want to train?;Сила, стиль, код, дисципліна, ритм — що ти хочеш прокачати?
+WelcomeStartBtn;Go to mentors;Перейти до наставників
+WelcomeNoTomorrow;There is no "I'll start tomorrow";Немає «почну завтра»
+WelcomeChange;You either change yourself today — or you stay in place.;Ти або змінюєш себе сьогодні — або стоїш на місці.

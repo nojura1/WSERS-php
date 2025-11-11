@@ -17,7 +17,6 @@
     <form method="post">
         <label>Name <input name="name" required></label>
         <label>Password <input type="password" name="pass" required></label>
-        <!--<label>Email <input type="email" name="email" required></label>-->
         <label>Message <textarea name="message" required></textarea></label>
         <button type="submit">Send</button>
     </form>

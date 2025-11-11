@@ -56,8 +56,10 @@
     ?>
 
     <?php if ($flag) { ?>
-        <form method="post">
+        <form class="register-form" method="post">
             <label>Username <input name="username" required></label>
+            <label>name <input name="name" required></label>
+            <label>Email <input type="email" name="email" required></label>
             <label>Password <input type="password" name="pass" required></label>
             <label>Password confirmation<input type="password" name="passconf" required></label>
             <button type="submit">Send</button>
