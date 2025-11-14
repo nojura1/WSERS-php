@@ -5,22 +5,36 @@
     <link rel="stylesheet" href="style.css? <?= time(); ?> ">
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Contact - Grip Shop</title>
+    <title>Contact - Mentorship Shop</title>
 </head>
 
 <body>
+    <script src="script.js?<?= time(); ?>"></script>
     <?php
-    include_once("navbar.php");
+    include_once "navbar.php";
     navbar($tArray["ContactBtn"]);
     ?>
-    <h1>Contact us</h1>
-    <form method="post">
-        <label>Name <input name="name" required></label>
-        <label>Password <input type="password" name="pass" required></label>
-        <label>Message <textarea name="message" required></textarea></label>
-        <button type="submit">Send</button>
-    </form>
-    <address>Luxembourg +352 00 00 00 hello@grip.shop</address>
+
+    <main class="page">
+        <section class="contact">
+            <h2><?= $tArray["Contact"] ?></h2>
+            <form action="" method="post">
+                <label>
+                    <?= $tArray["UnameCnt"] ?>
+                    <input type="text" name="name" required />
+                </label>
+                <label>
+                    <?= $tArray["EmailCnt"] ?>
+                    <input type="email" name="email" required />
+                </label>
+                <label>
+                    <?= $tArray["Msg"] ?>
+                    <textarea name="message" required></textarea>
+                </label>
+                <button type="submit"><?= $tArray["SendCnt"] ?></button>
+            </form>
+        </section>
+    </main>
 </body>
 
 </html>
