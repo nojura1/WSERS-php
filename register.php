@@ -18,7 +18,20 @@
 
     <main class="page">
         <h1><?= $tArray["RegForm"] ?></h1>
-
+        <?php
+        if (isset($_POST["username"], $_POST["name"], $_POST["email"], $_POST["pass"], $_POST["passconf"])) {
+            if (userExists($_POST["username"])) {
+                echo "<div class='alert alert-error'>" . $tArray["RegTaken"] . "</div>";
+            } else if ($_POST["pass"] !== $_POST["passconf"]) {
+                echo "<div class='alert alert-error'>" . $tArray["RegPassNotConf"] . "</div>";
+            } else {
+                $fhandler = fopen("clients.csv", "a");
+                echo "<div class='alert alert-success'>" . $tArray["RegSuccess"] . "</div>";
+                fwrite($fhandler, "\n" . $_POST["username"] . ";" . $_POST["name"] . ";" . $_POST["email"] . ";" . $_POST["pass"]);
+                fclose($fhandler);
+            }
+        }
+        ?>
         <form class="register-form" method="post">
             <label><?= $tArray["UnameReg"] ?>
                 <input name="username" required>
@@ -37,22 +50,6 @@
             </label>
             <button type="submit"><?= $tArray["SendReg"] ?> </button>
         </form>
-
-
-        <?php
-        if (isset($_POST["username"], $_POST["name"], $_POST["email"], $_POST["pass"], $_POST["passconf"])) {
-            if (columnExists($_POST["username"], 0)) {
-                echo "<div class='alert alert-error'>username is already taken</div>";
-            } else if ($_POST["pass"] != $_POST["passconf"]) {
-                echo "<div class='alert alert-error'>password is not confirmed</div>";
-            } else {
-                $fhandler = fopen("clients.csv", "a");
-                echo "<div class='alert alert-success'>registration has been successfully completed</div>";
-                fwrite($fhandler, "\n" . $_POST["username"] . ";" . $_POST["name"] . ";" . $_POST["email"] . ";" . $_POST["pass"]);
-                fclose($fhandler);
-            }
-        }
-        ?>
     </main>
 </body>
 

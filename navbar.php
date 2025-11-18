@@ -21,6 +21,7 @@ function defLang($l)
 
 while (!feof($tFile)) {
     $line = fgets($tFile);
+    if ($line === false) break;
     $columns = explode(";", $line);
     $tArray[$columns[0]] = $columns[defLang($lang)];
 }
@@ -43,14 +44,15 @@ function navbar($page)
     <nav>
         <div class="nav-inner">
             <div class="logo">
-                <a href="pics/logo.png" target="_blank">
+                <a href="pics/logo.png">
+                    <span class="logo-orb"></span>
                     Mentorship Shop
                 </a>
             </div>
-
+            
             <ul>
                 <?php foreach ($navbarTable as $key => $value) { ?>
-                    <li <?php if ($page == $key)
+                    <li <?php if ($page === $key)
                         print ("class='highlight'"); ?>>
                         <a class="nav-link" href="<?php print ($value . '?lang=' . $lang); ?>">
                             <?php print ($key); ?>
@@ -61,10 +63,10 @@ function navbar($page)
 
             <form id="f" method="get">
                 <select name="lang" onchange="this.form.submit()">
-                    <option value="EN" <?php if ($lang == "EN") {
+                    <option value="EN" <?php if ($lang === "EN") {
                         print ("selected");
                     } ?>>English</option>
-                    <option value="UA" <?php if ($lang == "UA") {
+                    <option value="UA" <?php if ($lang === "UA") {
                         print ("selected");
                     } ?>>Ukrainian</option>
                 </select>

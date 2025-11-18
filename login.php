@@ -15,10 +15,18 @@
     include_once("ccode.php");
     navbar($tArray["LoginBtn"]);
     ?>
-
     <main class="page">
+        <h1><?= $tArray["LoginLogin"] ?></h1>
+        <?php
+            if (isset($_POST["login"], $_POST["password"])) {
+                if (findUserByLoginAndPassword($_POST["login"], $_POST["password"])) {
+                    echo "<div class='alert alert-success'>" . $tArray["LoginSuccess"] . "</div>";
+                } else {
+                    echo "<div class='alert alert-error'>" . $tArray["LoginError"] . "</div>";
+                }
+            }
+        ?>
         <section class="login-form">
-            <h2><?= $tArray["LoginLogin"] ?></h2>
             <form method="post">
                 <label>
                     <?= $tArray["UnameEmail"] ?>
@@ -34,18 +42,6 @@
             </form>
         </section>
     </main>
-    <?php
-    if (isset($_POST["login"], $_POST["password"])) {
-        if (
-            (columnExists($_POST["login"], 0) || columnExists($_POST["login"], 2)) &&
-            columnExists($_POST["password"], 3)
-        ) {
-            echo "<div class='alert alert-success'>login has been successfully completed</div>";
-        } else {
-            echo "<div class='alert alert-error'>The username/email or password do not match.</div>";
-        }
-    }
-    ?>
 </body>
 
 </html>

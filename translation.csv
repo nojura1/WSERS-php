@@ -28,4 +28,8 @@ SendReg;Send;Надіслати
 LoginLogin;Login;Вхід
 UnameEmail;Username or email;Ім’я користувача або електронна адреса
 PasswordLogin;Password;Пароль
-LoginBtn;Log in;Увійти
+RegTaken;Username is already taken;Ім’я користувача вже зайняте
+RegPassNotConf;Password is not confirmed;Пароль не підтверджено
+RegSuccess;Registration has been successfully completed;Реєстрацію успішно завершено
+LoginSuccess;Login has been successfully completed;Вхід успішно виконано
+LoginError;Username/email or password do not match.;Ім’я користувача/email або пароль не збігаються

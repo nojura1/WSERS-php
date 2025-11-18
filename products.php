@@ -25,24 +25,24 @@
 
             while (!feof($fhandler)) {
                 $line = fgets($fhandler);
-                $atoms = explode(";", $line);
-                if (count($atoms) == 6) {
+                $cols = explode(";", $line);
+                if (count($cols) == 6) {
                     ?>
                     <div class="prod">
                         <div>
-                            <?php $lang == "EN" ? print $atoms[0] : print $atoms[1]; ?>
+                            <?php $lang == "EN" ? print $cols[0] : print $cols[1]; ?>
                         </div>
 
-                        <img src="pics/<?php print $atoms[2]; ?>"
-                            alt="<?php $lang == "EN" ? print $atoms[0] : print $atoms[1]; ?>">
+                        <img src="pics/<?php print $cols[2]; ?>"
+                            alt="<?php $lang == "EN" ? print $cols[0] : print $cols[1]; ?>">
 
                         <div>
-                            <?php print $atoms[3]; ?>
+                            <?php print $cols[3]; ?>
                         </div>
 
                         <div>
                             <span class="price">
-                                <?php $lang == "EN" ? print $atoms[4] : print $atoms[5]; ?>
+                                <?php $lang == "EN" ? print $cols[4] : print $cols[5]; ?>
                             </span>
                         </div>
                     </div>
