@@ -1,3 +1,8 @@
+<?php
+include_once("ccode.php");
+include_once("navbar.php");
+navbar($tArray["ProductBtn"]);
+?>
 <!doctype html>
 <html lang="en">
 
@@ -10,13 +15,9 @@
 
 <body>
     <script src="script.js?<?= time(); ?>"></script>
-    <?php
-    include_once("navbar.php");
-    navbar($tArray["ProductBtn"]);
-    ?>
 
     <main class="page">
-        <h1>Products</h1>
+        <h1><?= $tArray["MentorsH1"] ?></h1>
 
         <div class="products">
             <?php
@@ -26,7 +27,7 @@
             while (!feof($fhandler)) {
                 $line = fgets($fhandler);
                 $cols = explode(";", $line);
-                if (count($cols) == 6) {
+                if (count($cols) === 6) {
                     ?>
                     <div class="prod">
                         <div>

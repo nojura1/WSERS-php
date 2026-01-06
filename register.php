@@ -1,3 +1,12 @@
+<?php
+include_once "navbar.php";
+include_once "ccode.php";
+if ($_SESSION["userLogged"]) {
+    header("Location: welcome.php?lang=" . $lang);
+    exit;
+}
+navbar($tArray["RegisterBtn"]);
+?>
 <!doctype html>
 <html lang="en">
 
@@ -10,43 +19,39 @@
 
 <body>
     <script src="script.js?<?= time(); ?>"></script>
-    <?php
-    include_once("navbar.php");
-    include_once("ccode.php");
-    navbar($tArray["RegisterBtn"]);
-    ?>
 
     <main class="page">
         <h1><?= $tArray["RegForm"] ?></h1>
         <?php
-        if (isset($_POST["username"], $_POST["name"], $_POST["email"], $_POST["pass"], $_POST["passconf"])) {
-            if (userExists($_POST["username"])) {
+        if (isset($_POST["Rusername"], $_POST["Rname"], $_POST["Remail"], $_POST["Rpass"], $_POST["Rpassconf"])) {
+            if (userExists($_POST["Rusername"])) {
                 echo "<div class='alert alert-error'>" . $tArray["RegTaken"] . "</div>";
-            } else if ($_POST["pass"] !== $_POST["passconf"]) {
+            } else if ($_POST["Rpass"] !== $_POST["Rpassconf"]) {
                 echo "<div class='alert alert-error'>" . $tArray["RegPassNotConf"] . "</div>";
             } else {
                 $fhandler = fopen("clients.csv", "a");
                 echo "<div class='alert alert-success'>" . $tArray["RegSuccess"] . "</div>";
-                fwrite($fhandler, "\n" . $_POST["username"] . ";" . $_POST["name"] . ";" . $_POST["email"] . ";" . $_POST["pass"]);
+                fwrite($fhandler, "\n" . $_POST["Rusername"] . ";" . $_POST["Rname"] . ";"
+                    . $_POST["Remail"] . ";" . password_hash($_POST["Rpass"], PASSWORD_DEFAULT) . ";user");
                 fclose($fhandler);
             }
         }
         ?>
         <form class="register-form" method="post">
             <label><?= $tArray["UnameReg"] ?>
-                <input name="username" required>
+                <input type="text" name="Rusername" required>
             </label>
             <label><?= $tArray["NameReg"] ?>
-                <input name="name" required>
+                <input type="text" name="Rname" required>
             </label>
             <label><?= $tArray["EmailReg"] ?>
-                <input type="email" name="email" required>
+                <input type="email" name="Remail" required>
             </label>
             <label><?= $tArray["Password"] ?>
-                <input type="password" name="pass" required>
+                <input type="password" name="Rpass" required>
             </label>
             <label><?= $tArray["PasswordConf"] ?>
-                <input type="password" name="passconf" required>
+                <input type="password" name="Rpassconf" required>
             </label>
             <button type="submit"><?= $tArray["SendReg"] ?> </button>
         </form>
